@@ -43,10 +43,15 @@ nav {
 	
 
 }
+.uploads{
+	text-decoration: none;
+	color: #000000;
+}
 .buttons{
 	display: flex;
 	margin-left: 80px;
 	color: #000000;
+	background-color: transparent;
 }
 body, input {
 	color: #0f0f0f81;
@@ -184,11 +189,7 @@ body, .search-bar {
 		color: #0c0c0c;
 
 	}
-	body {
-		
-		
-		
-	}
+	
 
 	.search-bar input {
 		box-shadow: 0 0 0 0.4em #000000 inset;

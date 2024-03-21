@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 
 
@@ -21,11 +22,8 @@ const NavBar = () => {
 	           	<span>Search</span>
 	                     </button>
                      </form>
-                     <div class="uploads"><button onClick={on}>Upload</button></div>
-                    <div class="buttons">
-                       
-                         <div><button>Login/Sign Up</button></div>
-                    </div>
+                     <div class="uploads"> <Link to="upload">Upload</Link></div>
+                    
                 </nav>
        </div>
                 

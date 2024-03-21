@@ -1,0 +1,217 @@
+.file-area {
+    width: 100%;
+    position: relative;
+
+    input[type=file] {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        opacity: 0;
+        cursor: pointer;
+        
+        
+    }
+
+  
+
+    input[type=file]:focus + .file-dummy {
+        outline: 2px solid rgba(255,255,255,0.5);
+        outline: -webkit-focus-ring-color auto 5px;
+    }
+
+    input[type=file]:valid + .file-dummy {
+        border-color: rgba(0,255,0,0.4);
+        background-color: rgba(0,255,0,0.3);
+
+        .success {
+            display: inline-block;
+        }
+        .default {
+            display: none;
+        }
+    }
+}
+
+* {
+    box-sizing: border-box;
+    font-family: 'Lato', sans-serif;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    font-weight: 300;
+    height: 100%;
+   
+    color: #000000;
+    font-size: 16px;
+    overflow: hidden;
+   
+
+
+}
+
+h1 {
+    text-align: center;
+    margin: 50px auto;
+    font-weight: 100;
+}
+
+label {
+    font-weight: 500;
+    display: block;
+    margin: 4px 0;
+    text-transform: uppercase;
+    font-size: 13px;
+    overflow: hidden;
+
+    span {
+        float: right;
+        text-transform: none;
+        font-weight: 200;
+        line-height: 1em;
+        font-style: italic;
+        opacity: 0.8;
+    }
+}
+
+
+
+.form-controll {
+    display: block;
+    padding: 8px 16px;
+    width: 100%;
+    font-size: 16px;
+    background-color: rgba(255,255,255,0.2);
+    border: 1px solid rgba(255,255,255,0.3);
+
+    color: black;
+
+    font-weight: 400;
+
+    &:focus {
+        outline: 2px solid rgba(255,255,255,0.5);
+        outline: -webkit-focus-ring-color auto 5px;
+    }
+}
+
+button {
+    padding: 8px 30px;
+    background: rgba(11, 85, 145, 0.724);
+    color: #ffffff;
+    text-transform: uppercase;
+    font-weight: 100;
+    font-size: 11px;
+    border: 0;
+    
+    cursor: pointer;
+}
+
+.form-group {
+    max-width: 500px;
+    margin: auto;
+    margin-bottom: 30px;
+}
+
+
+
+
+/*upload images css starts*/
+.container {
+  
+    background-color: transparent;
+    backdrop-filter: blur(2px);
+             
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    position: absolute;
+    width: 50%;
+    left: 20vw;
+    top: 15vh;
+    
+    
+}
+.img-area {
+    position: relative;
+    width: 100%;
+    height: 150px;
+    background: grey;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.img-area .icon {
+    font-size: 70px;
+}
+.img-area h3 {
+    font-size: 12px;
+    font-weight: 500;
+    margin-bottom: 3px;
+}
+.img-area p {
+    font-size: 9px;
+    color: #999;
+}
+.img-area p span {
+    font-size: 9px;
+    font-weight: 300;
+}
+.img-area img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    z-index: 100;
+}
+.img-area::before {
+    content: attr(data-img);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(218, 128, 128, 0.5);
+    color: #fff;
+    font-weight: 500;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+    opacity: 0;
+    transition: all .3s ease;
+    z-index: 200;
+}
+.img-area.active:hover::before {
+    opacity: 1;
+}
+.select-image {
+    display: block;
+    width: 100%;
+    padding: 16px 0;
+    border-radius: 15px;
+    background: blue;
+    color: #0e0202;
+    font-weight: 500;
+    font-size: 13px;
+    border: none;
+    cursor: pointer;
+    transition: all .3s ease;
+}
+.select-image:hover {
+    background: darkblue;
+}
+
+/*upload images css ends*/
