@@ -6,10 +6,10 @@ const Upload=()=>{
     return (
 
 <div class="container" >
+    <div class="head">Upload Prescription Image</div>
         <form class="form" action="" method="post" enctype="" autocomplete="off">
 
-            <h1><strong>File upload</strong> </h1>
-
+           
            
             <div class="form-group">
                 <label for="caption">Caption </label>
