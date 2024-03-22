@@ -9,7 +9,7 @@
 
 .content{
   position: absolute;
-  backdrop-filter: blur(2px);
+  backdrop-filter: blur(12px);
   top: 60%;
   left: 50%;
   z-index: 999;
@@ -18,7 +18,7 @@
   width: 370px;
   height: 420px;
   transform: translate(-50%,-50%);
-  background: rgba(27, 126, 154, 0.4);
+  background: rgb(157, 23, 77);
 
   
 
@@ -96,9 +96,11 @@
   display: block;
 }
 .pass{
-  text-align: left;
+  margin-top: 5px;
+  text-align: center;
   margin: 10px 0;
   color: rgb(5, 0, 0);
+  
 }
 .pass a{
   color: white;
@@ -120,7 +122,7 @@
   font-family: 'Montserrat',sans-serif;
 }
 .field input[type="submit"]:hover{
-  background: #2691d9;
+  background:rgb(151, 10, 88);
   border-radius: 20px;;
   transition: ease-in-out 0.3s;
 }
@@ -146,23 +148,26 @@
 }
 .facebook{
   margin-left: 0;
+  color: black;
   background: #ffffff;
   border-radius: 20px;
-  border: 1px solid #3e61a8;
+  border: 1px solid white;
 }
 .instagram{
   background: #fcf7f7;
+  color: black;
   border: 1px solid #ffffff;
   border-radius: 20px;
 }
 .facebook:hover{
-  background: #3e61a8;
-  color: aliceblue;
+  background: black;
+  color: white;
   transition:ease-in-out 0.2s ;
  
 }
 .instagram:hover{
   background: #050404;
+  color: white;
   transition:ease-in-out 0.2s ;
 }
 .links i{

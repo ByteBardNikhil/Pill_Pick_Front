@@ -23,11 +23,11 @@ return(
         <form action="#">
           <div class="field">
             <span class="fa fa-user"></span>
-            <input type="text" name="" required="" placeholder="Name"/>
+            <input type="text" name="" required="" placeholder="Enter Name"/>
           </div>
           <div class="fielda">
             <span class="fa fa-user"></span>
-            <input type="text" name="" required="" placeholder="Email or Phone"/>
+            <input type="text" name="" required="" placeholder="Enter Email"/>
           </div>
           <div class="field space">
           <span class="fa fa-lock"></span>
@@ -36,15 +36,18 @@ return(
               className="pass-key"
               required=""
               name=""
-              placeholder="Password"
+              placeholder="Enter Password"
             />
             <span className="show" onClick={togglePasswordVisibility}>
               {showPassword ? "HIDE" : "SHOW"}
             </span>
           </div>
-          <div class="pass">
+          <br />
+          
+          {/* <div class="pass">
             <a href="#">Forgot Password?</a>
           </div>
+           */}
           <div class="field">
             <input type="submit" value="LOGIN"/>
           </div>
@@ -58,8 +61,8 @@ return(
             <i class="fab fa-instagram"><span>Git</span></i>
           </div>
         </div>
-        <div class="signup">Already have account?
-       <Link to="/">Login</Link>
+        <div class="signup">Already have account ?
+       <Link to="/"> Login</Link>
         </div>
       </div>
     </div>
