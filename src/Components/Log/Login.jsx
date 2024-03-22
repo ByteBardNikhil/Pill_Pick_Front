@@ -25,7 +25,7 @@ return(
         </script>
       </Helmet>
       <div class="content">
-        <header>Login Form</header>
+        <header>Login</header>
         <form action="#">
           <div class="field">
             <span class="fa fa-user"></span>
