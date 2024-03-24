@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 
 const NavBar = () => {
 
+   
+
 
     function scrollToTop() {
 
@@ -12,7 +14,9 @@ const NavBar = () => {
             top: 0,
             behavior: 'smooth'
         });
+        
     }
+    
     return (
 
         <div>
