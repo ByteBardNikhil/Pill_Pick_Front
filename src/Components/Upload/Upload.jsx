@@ -29,12 +29,24 @@ const Upload = () => {
         }
     };
 
+    const handleCancel = () => {
+        setSelectedFile(null);
+        setErrorMessage('');
+        // Clear the file input
+        document.getElementById('images').value = '';
+    };
+
     return (
         <div className="container">
             <div className="head">Upload Prescription Image</div>
             <form className="form" onSubmit={handleSubmit} encType="" autoComplete="off">
+                <div className="image-preview">
+                    {selectedFile && (
+                        <img src={URL.createObjectURL(selectedFile)} alt="Preview" />
+                    )}
+                </div>
                 <div className="form-group">
-                    <label htmlFor="caption">Caption </label>
+                    <label htmlFor="caption">Prescription</label>
                     <input type="text" name="caption" id="caption" className="form-control" />
                 </div>
                 <div className="form-group">
@@ -43,6 +55,7 @@ const Upload = () => {
                 {errorMessage && <div className="error-message">{errorMessage}</div>}
                 <div className="form-group">
                     <button type="submit">Upload images</button>
+                    {selectedFile && <button type="button" onClick={handleCancel}>Cancel</button>}
                 </div>
             </form>
         </div>

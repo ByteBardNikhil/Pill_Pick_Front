@@ -3,14 +3,14 @@ import { createUser } from "../../Service/UserService";
 import './Login.css';
 import NavBar from "../NavBar/NavBar";
 import { Link } from "react-router-dom";
-import { login } from "../../Service/AuthService"; 
+
 import { useNavigate, useParams } from 'react-router-dom';
 
 
 
 const Register = () => {
 
-  const navigator = useNavigate(); // Get the navigation function
+  const navigator = useNavigate(); 
 
   const [formData, setFormData] = useState({
     username: '',
@@ -55,16 +55,24 @@ const Register = () => {
     try {
       const response = await createUser(formData);
       setSuccess('User created successfully: ' + response.data);
-      console.log('User created successfully:', response.data);
   
-      // Set login token after successful signup
+      
+     
+      const expirationDate = new Date();
+      expirationDate.setDate(expirationDate.getDate() + 365); 
+      
+      document.cookie = `username=${formData.username}; expires=${expirationDate.toUTCString()}; path=/`;
+      document.cookie = `email=${formData.email}; expires=${expirationDate.toUTCString()}; path=/`;
       navigator('/upload');
-      login(response.token); // Assuming the token is returned in the response
+    
+    
     } catch (error) {
       console.error('Error creating user:', error);
       setError('Error creating user. Please try again later.');
     }
-  };
+};
+
+
   const validateEmail = (email) => {
     const regex = /\S+@\S+\.\S+/;
     return regex.test(email);
