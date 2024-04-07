@@ -25,11 +25,11 @@ return(
         </script>
       </Helmet>
       <div class="content">
-        <header>Login Form</header>
+        <header>Login</header>
         <form action="#">
           <div class="field">
             <span class="fa fa-user"></span>
-            <input type="text" name="" required="" placeholder="Email or Phone"/>
+            <input type="text" name="" required="" placeholder="Enter Email"/>
           </div>
           <div class="field space">
             <span class="fa fa-lock"></span>
@@ -38,14 +38,14 @@ return(
               className="pass-key"
               required=""
               name=""
-              placeholder="Password"
+              placeholder="Enter Password"
             />
             <span className="show" onClick={togglePasswordVisibility}>
               {showPassword ? "HIDE" : "SHOW"}
             </span>
           </div>
           <div class="pass">
-            <a href="#">Forgot Password?</a>
+            <a href="#">Forgot Password ?</a>
           </div>
           <div class="field">
             <input type="submit" value="LOGIN"/>
@@ -60,8 +60,8 @@ return(
             <i class="fab fa-instagram"><span>Git</span></i>
           </div>
         </div>
-        <div class="signup">Don't have account?
-         <Link to="register">SignUp</Link>
+        <div class="signup">Don't have account ?
+         <Link to="/register"> SignUp</Link>
         </div>
       </div>
     </div>

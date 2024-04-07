@@ -8,5 +8,6 @@ import Register from './Components/Log/Register.jsx'
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
+    
 <App/>
 )
