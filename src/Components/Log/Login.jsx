@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
-import {getUser} from '../../Service/UserService'
+import { getUser } from '../../Service/UserService';
 import './Login.css';
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
 
-  
   const handleSubmit = async (event) => {
     event.preventDefault();
     const email = event.target.elements.email.value;
@@ -15,29 +14,13 @@ const Login = () => {
     try {
       const userData = await getUser(email); 
       console.log('User data:', userData);
-
-       
-      const expirationDate = new Date();
-      expirationDate.setDate(expirationDate.getDate() + 365); 
-      
-      document.cookie = `username=${formData.username}; expires=${expirationDate.toUTCString()}; path=/`;
-      document.cookie = `email=${formData.email}; expires=${expirationDate.toUTCString()}; path=/`;
-      navigator('/upload');
-    
-       
     } catch (error) {
-      // Handle errors, e.g., display error message to the user
       console.error('Error fetching user data:', error);
+      // Print error message below the login button
+      document.getElementById('error-message').innerText = 'Wrong username or password';
     }
   };
-  
-  
-  
-  
-  
-  
-  
-  
+
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
@@ -51,7 +34,7 @@ const Login = () => {
       </Helmet>
       <div className="content">
         <header>Login</header>
-        <form action="#">
+        <form onSubmit={handleSubmit}>
           <div className="field">
             <span className="fa fa-user"></span>
             <input type="text" name="email" required placeholder="Enter Email"/>
@@ -74,7 +57,11 @@ const Login = () => {
           </div>
           <div className="field">
             <input type="submit" value="LOGIN"/>
+            
           </div>
+          
+          <p id="error-message" className="error-message"></p>
+
         </form>
         <div className="login">Or login with</div>
         <div className="links">

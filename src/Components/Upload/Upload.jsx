@@ -1,5 +1,9 @@
 import React, { useState } from "react";
 import './Upload.css';
+import { sendPrescription } from "../../Service/UserService";
+
+
+
 
 const Upload = () => {
     const [selectedFile, setSelectedFile] = useState(null);
@@ -8,6 +12,7 @@ const Upload = () => {
     const handleFileChange = (event) => {
         const file = event.target.files[0];
         const allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
+
 
         if (file && allowedTypes.includes(file.type)) {
             setSelectedFile(file);
@@ -18,12 +23,24 @@ const Upload = () => {
         }
     };
 
+ 
+
     const handleSubmit = (event) => {
         event.preventDefault();
         if (selectedFile) {
             // Proceed with upload
-            console.log('Upload the selected file:', selectedFile);
-            // You can perform further actions, such as sending the file to a server
+            sendPrescription(selectedFile)
+                .then(() => {
+                    // Additional actions after successful upload
+                    console.log('File uploaded successfully.');
+                    navigator('Text')
+                    
+                })
+                .catch((error) => {
+                    // Handle upload errors
+                    console.error('Error uploading file:', error);
+                    setErrorMessage('Error uploading file. Please try again.');
+                });
         } else {
             setErrorMessage('Please select an image file.');
         }
@@ -36,6 +53,7 @@ const Upload = () => {
         document.getElementById('images').value = '';
     };
 
+    
     return (
         <div className="container">
             <div className="head">Upload Prescription Image</div>
