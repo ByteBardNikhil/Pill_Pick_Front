@@ -190,7 +190,7 @@ body, .search-bar {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('src/assets/image/diagnose-doctor-medicine-health-wellness-concept.jpg'); /* Specify the path to your background image */
+    background-image: url('src/assets/image/image.png'); /* Specify the path to your background image */
     background-size: cover; /* Cover the entire area */
     z-index: -1; /* Move the background behind other content */
 }

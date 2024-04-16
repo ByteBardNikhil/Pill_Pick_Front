@@ -1,70 +1,83 @@
-import React,{useState} from "react"
+import React, { useState } from "react";
+import { Helmet } from "react-helmet";
+import { Link } from "react-router-dom";
+import { getUser } from '../../Service/UserService';
+import './Login.css';
 
-import { Helmet } from "react-helmet"
-import './Login.css'
-import register from "./Register"
-import { Link } from "react-router-dom"
-
-
-const Login =()=>{
+const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const email = event.target.elements.email.value;
+
+    try {
+      const userData = await getUser(email); 
+      console.log('User data:', userData);
+    } catch (error) {
+      console.error('Error fetching user data:', error);
+      // Print error message below the login button
+      document.getElementById('error-message').innerText = 'Wrong username or password';
+    }
+  };
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
 
-
-return(
-  
-
-<div class="bg-img">
-  <Helmet>
+  return (
+    <div className="bg-img">
+      <Helmet>
         <script>
-        
-         
+          {/* Add any script if needed */}
         </script>
       </Helmet>
-      <div class="content">
+      <div className="content">
         <header>Login</header>
-        <form action="#">
-          <div class="field">
-            <span class="fa fa-user"></span>
-            <input type="text" name="" required="" placeholder="Enter Email"/>
+        <form onSubmit={handleSubmit}>
+          <div className="field">
+            <span className="fa fa-user"></span>
+            <input type="text" name="email" required placeholder="Enter Email"/>
           </div>
-          <div class="field space">
-            <span class="fa fa-lock"></span>
+          <div className="field space">
+            <span className="fa fa-lock"></span>
             <input
               type={showPassword ? "text" : "password"}
               className="pass-key"
-              required=""
-              name=""
+              required
+              name="password"
               placeholder="Enter Password"
             />
             <span className="show" onClick={togglePasswordVisibility}>
               {showPassword ? "HIDE" : "SHOW"}
             </span>
           </div>
-          <div class="pass">
+          <div className="pass">
             <a href="#">Forgot Password ?</a>
           </div>
-          <div class="field">
+          <div className="field">
             <input type="submit" value="LOGIN"/>
+            
           </div>
+          
+          <p id="error-message" className="error-message"></p>
+
         </form>
-        <div class="login">Or login with</div>
-        <div class="links">
-          <div class="facebook">
-            <i class="fab fa-facebook-f"><span>Google</span></i>
+        <div className="login">Or login with</div>
+        <div className="links">
+          <div className="facebook">
+            <i className="fab fa-facebook-f"><span>Google</span></i>
           </div>
-          <div class="instagram">
-            <i class="fab fa-instagram"><span>Git</span></i>
+          <div className="instagram">
+            <i className="fab fa-instagram"><span>Git</span></i>
           </div>
         </div>
-        <div class="signup">Don't have account ?
-         <Link to="/register"> SignUp</Link>
+        <div className="signup">Don't have an account?
+          <Link to="/register"> SignUp</Link>
         </div>
       </div>
     </div>
-)
+  );
 }
-    export default Login
+
+export default Login;

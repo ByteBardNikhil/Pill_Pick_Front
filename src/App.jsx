@@ -5,6 +5,7 @@ import Register from './Components/Log/Register'
 import Login from './Components/Log/Login'
 import NavBar from './Components/NavBar/NavBar';
 import Upload from './Components/Upload/Upload';
+import Text from './Components/Text/Text';
 
 function App() {
     return(
@@ -12,11 +13,17 @@ function App() {
         <NavBar/>
           
         <Routes >
-        <Route path="" element={<Login />} />
+        
+        
 
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
         <Route path="upload" element={<Upload />}/>
+        <Route path="/text" element={<Text />} />
+
+
+        
+
         </Routes>  
         
         </BrowserRouter>
