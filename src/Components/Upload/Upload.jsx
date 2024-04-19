@@ -33,12 +33,12 @@ const Upload = () => {
         if (selectedFile) {
             sendPrescription(selectedFile)
                 .then((data) => {
-                    // Set the extracted text in state
+                   
                     setExtractedText(data);
                     console.log('Extracted text:', data);
                     console.log(extractedText);
 
-                    // Step 3: Navigate to the '/text' route
+                   
                     navigator('/text');
                 })
                 .catch((error) => {
