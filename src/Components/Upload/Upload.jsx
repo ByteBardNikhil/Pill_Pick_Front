@@ -13,7 +13,7 @@ const Upload = () => {
     const [selectedFile, setSelectedFile] = useState(null);
     const [errorMessage, setErrorMessage] = useState('');
     const [extractedText, setExtractedText] = useState(''); // Define extractedText state
-    const navigator = useNavigate(); // Get the navigation function
+    const navigate = useNavigate(); // Get the navigation function
 
     const handleFileChange = (event) => {
         const file = event.target.files[0];
@@ -32,19 +32,25 @@ const Upload = () => {
         event.preventDefault();
         if (selectedFile) {
             sendPrescription(selectedFile)
-                .then((data) => {
-                   
-                    setExtractedText(data);
-                    console.log('Extracted text:', data);
-                    console.log(extractedText);
+            .then((response) => {
+                try {
+                    const extractedText = response.data;
+                    
+                    // Set the extracted text in state
+                    setExtractedText(extractedText);
+                    console.log('Extracted text:', extractedText);
 
-                   
-                    navigator('/text');
-                })
-                .catch((error) => {
-                    console.error('Error uploading file:', error);
-                    setErrorMessage('Error uploading file. Please try again.');
-                });
+                    // Navigate to the text page with the extracted text
+                    navigate('/text', { state: { extractedText } });
+                } catch (error) {
+                    console.error('Error accessing response data:', error);
+                    setErrorMessage('Error accessing response data. Please try again.');
+                }
+            })
+            .catch((error) => {
+                console.error('Error uploading file:', error);
+                setErrorMessage('Error uploading file. Please try again.');
+            });
         } else {
             setErrorMessage('Please select an image file.');
         }
