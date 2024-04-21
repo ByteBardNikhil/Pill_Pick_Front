@@ -1,0 +1,32 @@
+.container {
+  margin: 20px;
+  width: 100%; /* Adjust the width as needed */
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th,
+.table td {
+  border: 1px solid #000;
+  padding: 8px;
+  text-align: left;
+  font-weight: normal;
+}
+
+.table th {
+  background-color: #000;
+  color: #fff;
+}
+
+.table-wrapper {
+  max-height: 300px;
+   /* Adjust the height as needed */
+  overflow-x: auto;
+}
+
+.bold-row {
+  font-weight: bold;
+}

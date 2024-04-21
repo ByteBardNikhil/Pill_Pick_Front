@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import './Text.css';
+import { useNavigate } from 'react-router-dom';
 
 const Text = () => {
+    const navigate = useNavigate(); // Get the navigation function
+
     const location = useLocation();
     const [extractedText, setExtractedText] = useState(location.state?.extractedText || '');
     const [formData, setFormData] = useState({ name: '', age: '', medicine: '' });
+    const [searchedMedicine, setSearchedMedicine] = useState('');
 
     useEffect(() => {
         // Extract name, age, and medicine from the extracted text
@@ -22,6 +26,8 @@ const Text = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
         console.log("Submitted Form Data:", formData);
+        setSearchedMedicine(formData.medicine);
+        navigate('/medicinedetail');
         // Here you can add additional actions upon form submission
     };
 
