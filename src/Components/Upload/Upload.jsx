@@ -3,17 +3,16 @@ import './Upload.css';
 import { sendPrescription } from "../../Service/UserService";
 import { useNavigate } from 'react-router-dom';
 
-// Step 1: Create a new context
+
 const ExtractedDataContext = createContext();
 
-// Step 2: Export a custom hook to use this context
 export const useExtractedData = () => useContext(ExtractedDataContext);
 
 const Upload = () => {
     const [selectedFile, setSelectedFile] = useState(null);
     const [errorMessage, setErrorMessage] = useState('');
-    const [extractedText, setExtractedText] = useState(''); // Define extractedText state
-    const navigator = useNavigate(); // Get the navigation function
+    const [extractedText, setExtractedText] = useState(''); 
+    const navigator = useNavigate(); 
 
     const handleFileChange = (event) => {
         const file = event.target.files[0];
