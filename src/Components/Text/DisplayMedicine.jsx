@@ -1,11 +1,16 @@
 import React, { useState, useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import * as XLSX from 'xlsx';
 import './DisplayMedicine.css';
 
-const ExcelData = ({ searchedMedicine }) => {
+const ExcelData = () => {
+  
+  const location = useLocation();
+  const medicine = location.state?.medicine;
   const [medicineData, setMedicineData] = useState([]);
 
   useEffect(() => {
+    console.log('Medicine Data:', medicine);
     const fetchData = async () => {
       try {
         const fileUrl = 'https://docs.google.com/spreadsheets/d/1FqfbwF7crjKmXnvWtVK9i_RCaBfhMEv0-imW0Es4-oI/edit#gid=1219979586';
@@ -16,7 +21,7 @@ const ExcelData = ({ searchedMedicine }) => {
         const sheetName = workbook.SheetNames[0];
         const sheet = workbook.Sheets[sheetName];
         const parsedData = XLSX.utils.sheet_to_json(sheet);
-        setMedicineData(parsedData);
+        setMedicineData();
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -32,11 +37,6 @@ const ExcelData = ({ searchedMedicine }) => {
     return value;
   };
 
-  const filteredData = searchedMedicine
-    ? medicineData.filter(medicine => Object.values(medicine).some(value =>
-        typeof value === 'string' && value.toLowerCase().includes(searchedMedicine.toLowerCase())))
-    : medicineData;
-
   return (
     <div className="container">
       <div className="table-wrapper">
@@ -51,7 +51,7 @@ const ExcelData = ({ searchedMedicine }) => {
             )}
           </thead>
           <tbody>
-            {filteredData.map((medicine, rowIndex) => (
+            {medicineData.map((medicine, rowIndex) => (
               <tr key={rowIndex}>
                 {Object.values(medicine).map((value, cellIndex) => (
                   <td key={cellIndex}>{renderCellValue(value)}</td>
@@ -62,6 +62,7 @@ const ExcelData = ({ searchedMedicine }) => {
         </table>
       </div>
     </div>
+
   );
 };
 

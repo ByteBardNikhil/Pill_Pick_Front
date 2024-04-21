@@ -1,22 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom'; // Import useNavigate
 import './Text.css';
-import { useNavigate } from 'react-router-dom';
 
 const Text = () => {
-    const navigate = useNavigate(); // Get the navigation function
-
     const location = useLocation();
+    const navigate = useNavigate(); // Initialize navigate
     const [extractedText, setExtractedText] = useState(location.state?.extractedText || '');
     const [formData, setFormData] = useState({ name: '', age: '', medicine: '' });
-    const [searchedMedicine, setSearchedMedicine] = useState('');
 
     useEffect(() => {
         // Extract name, age, and medicine from the extracted text
         const nameMatch = extractedText.match(/Name\s*-\s*([^,]+)/i);
         const ageMatch = extractedText.match(/Age\s*-\s*([^,]+)/i);
         const medicineMatch = extractedText.match(/Medicine\s*-\s*(\S+)/i);
-
+        
         // Update form data with extracted values
         if (nameMatch) setFormData(prev => ({ ...prev, name: nameMatch[1].trim() }));
         if (ageMatch) setFormData(prev => ({ ...prev, age: ageMatch[1].trim() }));
@@ -26,9 +23,9 @@ const Text = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
         console.log("Submitted Form Data:", formData);
-        setSearchedMedicine(formData.medicine);
-        navigate('/medicinedetail');
+        console.log("Submitted Form Data:", formData.medicine);
         // Here you can add additional actions upon form submission
+        navigate('/medicinedetail', { state: { medicine: formData.medicine } }); // Pass medicine data to the '/medicinedetail' route
     };
 
     return (
@@ -61,6 +58,7 @@ const Text = () => {
                 </div>
                 <button type="submit">Submit</button>
             </form>
+            
         </div>
     );
 }
