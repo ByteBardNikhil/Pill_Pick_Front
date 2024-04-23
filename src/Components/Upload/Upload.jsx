@@ -11,8 +11,8 @@ export const useExtractedData = () => useContext(ExtractedDataContext);
 const Upload = () => {
     const [selectedFile, setSelectedFile] = useState(null);
     const [errorMessage, setErrorMessage] = useState('');
-    const [extractedText, setExtractedText] = useState(''); // Define extractedText state
-    const navigate = useNavigate(); // Get the navigation function
+    const [extractedText, setExtractedText] = useState(''); 
+    const navigate = useNavigate(); 
 
     const handleFileChange = (event) => {
         const file = event.target.files[0];
