@@ -21,7 +21,7 @@ const ExcelData = () => {
         const sheetName = workbook.SheetNames[0];
         const sheet = workbook.Sheets[sheetName];
         const parsedData = XLSX.utils.sheet_to_json(sheet);
-        setMedicineData();
+        setMedicineData(parsedData);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -38,7 +38,7 @@ const ExcelData = () => {
   };
 
   return (
-    <div className="container">
+    <div className="contain">
       <div className="table-wrapper">
         <table className="table">
           <thead>
