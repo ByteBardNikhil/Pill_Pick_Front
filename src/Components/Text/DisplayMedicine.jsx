@@ -8,6 +8,7 @@ const ExcelData = () => {
   const location = useLocation();
   const medicine = location.state?.medicine;
   const [medicineData, setMedicineData] = useState([]);
+  const [filteredData, setFilteredData] = useState([]);
 
   useEffect(() => {
     console.log('Medicine Data:', medicine);
@@ -30,6 +31,18 @@ const ExcelData = () => {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    const filtered = medicineData.filter(item => {
+      return Object.values(item).some(val => {
+        if (typeof val === 'string' && val.toLowerCase().includes(medicine.toLowerCase())) {
+          return true;
+        }
+        return false;
+      });
+    });
+    setFilteredData(filtered);
+  }, [medicine, medicineData]);
+
   const renderCellValue = (value) => {
     if (typeof value === 'string' && value.match(/\.(jpeg|jpg|gif|png)$/) != null) {
       return <img src={value} alt="medicine" style={{ maxWidth: '100%', height: 'auto' }} />;
@@ -42,16 +55,16 @@ const ExcelData = () => {
       <div className="table-wrapper">
         <table className="table">
           <thead>
-            {Object.keys(medicineData[0] || {}).length > 0 && (
+            {Object.keys(filteredData[0] || {}).length > 0 && (
               <tr>
-                {Object.keys(medicineData[0]).map((key, index) => (
+                {Object.keys(filteredData[0]).map((key, index) => (
                   <th key={index}>{key}</th>
                 ))}
               </tr>
             )}
           </thead>
           <tbody>
-            {medicineData.map((medicine, rowIndex) => (
+            {filteredData.map((medicine, rowIndex) => (
               <tr key={rowIndex}>
                 {Object.values(medicine).map((value, cellIndex) => (
                   <td key={cellIndex}>{renderCellValue(value)}</td>
