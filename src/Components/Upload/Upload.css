@@ -132,13 +132,13 @@ button {
 /*upload images css starts*/
 .container {
   
-    background-color: rgba(222, 212, 194, 0.489);
+    background-color: rgba(129, 209, 206, 0.489);
     backdrop-filter: blur(2px);
              
     border-radius: 20px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     position: absolute;
-    width: 100%;
+    width: 50%;
     left: 27vw;
     top: 30vh;
     
@@ -239,7 +239,7 @@ button {
     display: block; /* Prevent inline alignment issues */
 }
 
-.form {
+.formaa {
     flex: 1;
 }
 
@@ -251,9 +251,7 @@ button {
     color: red;
 }
 
-button[type="submit"] {
-    margin-left: auto; /* Shift the button to the right */
-}
+
 
 
 /*upload images css ends*/

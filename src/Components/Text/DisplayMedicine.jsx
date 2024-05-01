@@ -50,19 +50,35 @@ const ExcelData = () => {
     }
     return value;
   };
+  const columnHeadings = Object.keys(filteredData[0] || {}).map((key) => {
+    switch (key) {
+      case 'A': return 'Medicine Name';
+      case 'B': return 'Composition';
+      case 'C': return 'Side Effects';
+      case 'D': return 'Uses';
+      case 'E': return 'Image';
+      case 'F': return 'Manufacturer firm';
+      // Add more cases as needed for additional columns
+      default: return key; // Use default key if no custom heading is specified
+    }
+  });
 
   return (
     <div className="contain">
+       <div class="med">
+        
+        <a href="https://www.google.com/maps/search/medical+store+near+me" target="_blank">Find Nearest Medical Store</a>
+    </div>
       <div className="table-wrapper">
         <table className="table">
           <thead>
-            {Object.keys(filteredData[0] || {}).length > 0 && (
-              <tr>
-                {Object.keys(filteredData[0]).map((key, index) => (
-                  <th key={index}>{key}</th>
-                ))}
-              </tr>
-            )}
+          <tr>
+              {/* Render custom column headings */}
+              {columnHeadings.map((heading, index) => (
+                <th key={index}>{heading}</th>
+              ))}
+            </tr>
+           
           </thead>
           <tbody>
             {filteredData.map((medicine, rowIndex) => (

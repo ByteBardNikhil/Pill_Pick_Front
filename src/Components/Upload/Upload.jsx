@@ -67,7 +67,7 @@ const Upload = () => {
         <ExtractedDataContext.Provider value={extractedText}>
             <div className="container">
                 <div className="head">Upload Prescription Image</div>
-                <form className="form" onSubmit={handleSubmit} encType="" autoComplete="off">
+                <form className="formaa" onSubmit={handleSubmit} encType="" autoComplete="off">
                     <div className="image-preview">
                         {selectedFile && (
                             <img src={URL.createObjectURL(selectedFile)} alt="Preview" />
@@ -75,7 +75,7 @@ const Upload = () => {
                     </div>
                     <div className="form-group">
                         <label htmlFor="caption">Prescription</label>
-                        <input type="text" name="caption" id="caption" className="form-control" />
+                       
                     </div>
                     <div className="form-group">
                         <input type="file" id="images" name="images" onChange={handleFileChange} accept="image/jpeg, image/png, image/gif" />

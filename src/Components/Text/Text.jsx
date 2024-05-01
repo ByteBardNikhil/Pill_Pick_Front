@@ -29,7 +29,7 @@ const Text = () => {
     };
 
     return (
-        <div className="container">
+        <div className="containment">
             <h1>Edit and Submit Text</h1>
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
